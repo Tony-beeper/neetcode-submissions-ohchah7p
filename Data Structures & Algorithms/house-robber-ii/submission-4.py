@@ -1,0 +1,18 @@
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        if len(nums) == 1:
+            return nums[0]
+
+        def helper(arr):
+
+            prev1 , prev2 = 0,0
+            for house in arr:
+                buf = prev1
+                prev1 = max(prev1, prev2 + house)
+                prev2 = buf
+            return prev1
+        # print(helper(nums[:-1]))
+        return max(helper(nums[1:]),helper(nums[:-1]))
+
+
+
